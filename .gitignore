@@ -1,0 +1,5 @@
+.env*
+.docker/*
+docker-compose.override.yml
+docker-compose.config.yml
+odoo/etc/odoo.conf

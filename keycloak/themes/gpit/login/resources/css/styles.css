@@ -1,0 +1,27 @@
+:root {
+    --pf-global--primary-color--100: #005eb8;
+    --pf-global--primary-color--200: #005eb8;
+    --default-background-color: #005eb8;
+    --link-hover-color: #005eb8;
+}
+ 
+.login-pf body {
+    background: #ffffff;
+}
+ 
+.login-pf a:hover {
+    color: var(--link-hover-color);
+    text-decoration: none;
+}
+ 
+.pf-c-form-control {
+    --pf-global--primary-color--100: unset;
+}
+
+.custom-logo-text {
+    background-image: url(../img/nhs-digital-logo.svg);
+    background-repeat: no-repeat;
+    height: 240px;
+    width: 307px;
+    margin: 0 auto;
+}
