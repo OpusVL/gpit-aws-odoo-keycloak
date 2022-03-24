@@ -17,8 +17,10 @@ if [ -f ".env" ]; then
 
     # Create the odoo user in postgres
     PGPASSWORD=${POSTGRES_PASSWORD} psql -h ${DB_HOST} -U postgres -c "CREATE USER odoo WITH ENCRYPTED PASSWORD '${ODOO_POSTGRES_PASSWORD}' CREATEDB;"
+    PGPASSWORD=${POSTGRES_PASSWORD} psql -h ${DB_HOST} -U postgres -c "CREATE USER ${KEYCLOAK_POSTGRES_USER} WITH ENCRYPTED PASSWORD '${KEYCLOAK_POSTGRES_PASSWORD}' CREATEDB;"
+    PGPASSWORD=${POSTGRES_PASSWORD} psql -h ${DB_HOST} -U postgres -c 'CREATE DATABASE "${KEYCLOAK_DATABASE}" OWNER ${KEYCLOAK_POSTGRES_USER};'
 
-    # PAss env variables into odoo.conf
+    # Pass env variables into odoo.conf
     render_template odoo/etc/odoo.conf.tpl > odoo/etc/odoo.conf
 
     # Set the required odoo permissions
