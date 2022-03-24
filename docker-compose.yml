@@ -53,3 +53,9 @@ services:
       - "8080:8080"
     volumes:
       - "${PWD}/keycloak/themes/gpit:/opt/jboss/keycloak/themes/gpit:rw"
+    restart: on-failure
+    logging:
+      driver: 'awslogs'
+      options:
+        awslogs-region: 'eu-west-2'
+        awslogs-group: '/var/log/keycloak.log'
