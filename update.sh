@@ -23,7 +23,7 @@ PID=$!
 
 docker-compose run --rm odoo -d ${ODOO_DATABASE} -u ${ODOO_MODULES:-billing,op_import_data} --stop-after-init
 
-PGPASSWORD=${ODOO_POSTGRES_PASSWORD} psql -h ${DB_HOST} -U postgres -d ${ODOO_DATABASE} -c "DELETE FROM ir_attachment WHERE url LIKE '/web/content/%';"
+PGPASSWORD=${POSTGRES_PASSWORD} psql -h ${DB_HOST} -U postgres -d ${ODOO_DATABASE} -c "DELETE FROM ir_attachment WHERE url LIKE '/web/content/%';"
 
 if [ -n "${PID}" ]; then
     kill -s HUP ${PID}
